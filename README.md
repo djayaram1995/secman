@@ -1,0 +1,1 @@
+No spring xml configurations
