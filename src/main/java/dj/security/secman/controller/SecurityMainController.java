@@ -12,5 +12,11 @@ public class SecurityMainController {
 		return "secload";
 	}
 	
+	@GetMapping("logi")
+	public String logi() {
+		System.out.println("login");
+		return "logi";
+	}
+	
 	
 }
