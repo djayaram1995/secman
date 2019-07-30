@@ -9,7 +9,7 @@
 <title>SecMan</title>
 </head>
 <body>
-	<form:form action="logiProcess" method="post">
+	<form action="logiProcess" method="post">
 	<c:if test="${param.error != null}">
 	Sorry wrong u are
 	</c:if>
@@ -19,6 +19,7 @@
 		<input name="username" type="text">
 		<input name="password" type="password">
 		<input value="login" type="submit">
-	</form:form>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+	</form>
 </body>
 </html>
