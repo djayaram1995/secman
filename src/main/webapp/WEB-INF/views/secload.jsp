@@ -18,7 +18,7 @@
 		</div>
 	<div>
 	<form method="post" action="${pageContext.request.contextPath}/logout">
-		<input type="submit">
+		<input type="submit" name="logout" value="logout">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	</form>
 	</div>

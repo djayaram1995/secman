@@ -11,6 +11,10 @@ public class SecurityMainController {
 		System.out.println("figure");
 		return "secload";
 	}
+	@GetMapping("/")
+	public String jill() {
+		return "jill";
+	}
 	
 	@GetMapping("logi")
 	public String logi() {
@@ -18,5 +22,9 @@ public class SecurityMainController {
 		return "logi";
 	}
 	
+	@GetMapping("/access-denied")
+	public String accessDenied() {
+		return "accessDenied";
+	}
 	
 }
