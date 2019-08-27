@@ -1,53 +1,69 @@
-DROP DATABASE  IF EXISTS `springsecurity`;
+/*
+Navicat MySQL Data Transfer
 
-CREATE DATABASE  IF NOT EXISTS `springsecurity`;
-USE `springsecurity`;
+Source Server         : test
+Source Server Version : 50719
+Source Host           : localhost:3306
+Source Database       : springsecurity
 
---
--- Table structure for table `users`
---
+Target Server Type    : MYSQL
+Target Server Version : 50719
+File Encoding         : 65001
 
+Date: 2019-08-27 06:59:19
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for authorities
+-- ----------------------------
+DROP TABLE IF EXISTS `authorities`;
+CREATE TABLE `authorities` (
+  `username` varchar(255) NOT NULL,
+  `authority` varchar(255) NOT NULL,
+  UNIQUE KEY `UNAUTH` (`username`,`authority`),
+  CONSTRAINT `FXKEYq` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of authorities
+-- ----------------------------
+INSERT INTO `authorities` VALUES ('admin', 'ROLE_ADMIN');
+INSERT INTO `authorities` VALUES ('wer', 'ROLE_ADMIN');
+INSERT INTO `authorities` VALUES ('wer', 'ROLE_EPOS');
+
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : test
+Source Server Version : 50719
+Source Host           : localhost:3306
+Source Database       : springsecurity
+
+Target Server Type    : MYSQL
+Target Server Version : 50719
+File Encoding         : 65001
+
+Date: 2019-08-27 06:58:45
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Inserting data for table `users`
---
-
-INSERT INTO `users` 
-VALUES 
-('john','{noop}test123',1),
-('mary','{noop}test123',1),
-('susan','{noop}test123',1);
-
-
---
--- Table structure for table `authorities`
---
-
-DROP TABLE IF EXISTS `authorities`;
-CREATE TABLE `authorities` (
-  `username` varchar(50) NOT NULL,
-  `authority` varchar(50) NOT NULL,
-  UNIQUE KEY `authorities_idx_1` (`username`,`authority`),
-  CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Inserting data for table `authorities`
---
-
-INSERT INTO `authorities` 
-VALUES 
-('john','ROLE_EMPLOYEE'),
-('mary','ROLE_EMPLOYEE'),
-('mary','ROLE_MANAGER'),
-('susan','ROLE_EMPLOYEE'),
-('susan','ROLE_ADMIN');
-
+-- ----------------------------
+-- Records of users
+-- ----------------------------
+INSERT INTO `users` VALUES ('admin', '{noop}admin', '1');
+INSERT INTO `users` VALUES ('wer', '{noop}12', '1');
 
